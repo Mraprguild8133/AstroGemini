@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: telegram-gemini-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python webhook_main.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY  
+        sync: false
+      - key: TOGETHER_API_KEY
+        sync: false
+      - key: WEBHOOK_URL
+        value: https://telegram-gemini-bot.onrender.com
+      - key: RATE_LIMIT_REQUESTS
+        value: "10"
+      - key: RATE_LIMIT_WINDOW
+        value: "60"
+      - key: MAX_CONVERSATION_LENGTH
+        value: "20"
+      - key: GEMINI_MODEL
+        value: "gemini-2.5-flash"
+      - key: GEMINI_TEMPERATURE
+        value: "0.7"
+      - key: GEMINI_MAX_TOKENS
+        value: "1000"
+      - key: TOGETHER_DEFAULT_MODEL
+        value: "meta-llama/Llama-2-70b-chat-hf"
+      - key: TOGETHER_TEMPERATURE
+        value: "0.7"
+      - key: TOGETHER_MAX_TOKENS
+        value: "1000"
